@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SignalWall v0.2</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>SignalWall</h1>
+      <p>Mass media ingestion suite · multi-feed live wall</p>
+    </div>
+    <div class="controls">
+      <textarea id="linkInput" placeholder="Paste one link or many links, one per line. YouTube, YouTube Live, Twitch, Facebook, X/Twitter, m3u8, generic URLs..."></textarea>
+      <div class="buttonRow">
+        <button id="addBtn">Ingest Links</button>
+        <button id="muteAllBtn">Mute All</button>
+        <button id="pauseAllBtn">Pause All</button>
+        <button id="clearBtn">Clear Wall</button>
+        <button id="exportBtn">Export Session</button>
+        <label class="importBtn">
+          Import Session
+          <input id="importInput" type="file" accept="application/json"/>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <div id="notice" class="notice hidden"></div>
+
+  <main>
+    <section id="wall" class="wall"></section>
+  </main>
+
+  <aside id="drawer" class="drawer hidden">
+    <div class="drawerHeader">
+      <h2>Transcript / Notes</h2>
+      <button id="closeDrawer">×</button>
+    </div>
+    <p id="drawerInfo"></p>
+    <textarea id="transcriptBox" placeholder="Paste transcript notes here. Later this can connect to a local speech-to-text/helper service."></textarea>
+    <div class="drawerActions">
+      <button id="downloadTranscript">Download Text</button>
+    </div>
+  </aside>
+
+  <template id="cardTemplate">
+    <article class="feed-card size-m">
+      <div class="feed-head">
+        <div class="feed-title-wrap">
+          <span class="status-dot"></span>
+          <span class="feed-title">Feed</span>
+          <span class="feed-type">unknown</span>
+        </div>
+        <div class="feed-actions">
+          <button data-action="small" title="Small">S</button>
+          <button data-action="medium" title="Medium">M</button>
+          <button data-action="large" title="Large">L</button>
+          <button data-action="full" title="Fullscreen">⛶</button>
+          <button data-action="remove" title="Remove">×</button>
+        </div>
+      </div>
+
+      <div class="player-wrap">
+        <div class="player"></div>
+        <div class="player-error hidden">
+          <strong>Embed blocked or unsupported.</strong>
+          <span>This source may block iframes, require login, or disallow external playback.</span>
+          <button data-action="open-original">Open Original</button>
+        </div>
+      </div>
+
+      <div class="feed-controls">
+        <button data-action="play">Play</button>
+        <button data-action="pause">Pause</button>
+        <button data-action="mute">Mute</button>
+        <button data-action="unmute">Unmute</button>
+        <input data-action="volume" type="range" min="0" max="100" value="35"/>
+        <button data-action="reload">Reload</button>
+        <button data-action="open-original">Original</button>
+        <button data-action="transcript">Notes</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="app.js"></script>
+</body>
+</html>
