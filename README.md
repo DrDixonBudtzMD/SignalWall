@@ -35,10 +35,10 @@ Double-click:
 START_SIGNALWALL.bat
 ```
 
-Then open:
+### Linux / macOS
 
-```text
-http://localhost:8080
+```bash
+./START_SIGNALWALL.sh
 ```
 
 ### Manual
@@ -78,3 +78,15 @@ Each feed includes a local notes/transcript drawer. Full automatic transcript ca
 - Optional local transcript helper
 - Screenshot/timestamp notes
 - Feed status badges: live, blocked, external-only, replay
+
+## Contributing and security
+
+See `CONTRIBUTING.md` and `SECURITY.md`. SignalWall does not bypass platform access controls, authentication, DRM, embedding restrictions, or browser security policies.
+
+## License
+
+SignalWall source is licensed under **GPL-3.0-or-later**. See `LICENSE`. Groundstate/SignalWall names, logos, and official-project identity are separate from the source-code license.
+
+## Support
+
+See `SUPPORT.md` for Groundstate Technology Patreon, PayPal, and Kickstarter links. Financial support does not purchase ownership, equity, IP rights, or special licensing rights.
