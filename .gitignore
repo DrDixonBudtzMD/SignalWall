@@ -1,0 +1,17 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local exports
+signalwall-session*.json
+signalwall_notes_*.txt
+
+# Future Electron/node build output
+node_modules/
+dist/
+build/
+out/
+.env
+.env.local
