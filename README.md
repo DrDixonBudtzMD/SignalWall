@@ -55,6 +55,15 @@ Then open:
 http://localhost:8080
 ```
 
+### Validate the checkout
+
+Run the dependency-free doctor before publishing or packaging changes:
+
+```bash
+python scripts/doctor.py
+node --check app.js
+```
+
 ## Platform limits
 
 Some platforms block embedded playback using security headers such as `Content-Security-Policy` or `X-Frame-Options`. SignalWall does not bypass those restrictions. When a platform blocks embedding, the tile provides an **Open Original** fallback.
