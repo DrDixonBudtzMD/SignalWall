@@ -22,6 +22,10 @@ def main() -> int:
     for capability in ("detectSource", "renderFeed", "exportBtn", "importInput"):
         if capability not in javascript:
             errors.append(f"app.js missing {capability}")
+    if "parsed.protocol==='http:'||parsed.protocol==='https:'" not in javascript:
+        errors.append("app.js does not restrict embedded URLs to HTTP(S)")
+    if "detectSource(saved.source?.url||saved.url||'')" not in javascript:
+        errors.append("session imports can bypass source URL validation")
 
     if errors:
         print("SignalWall doctor failed:")
