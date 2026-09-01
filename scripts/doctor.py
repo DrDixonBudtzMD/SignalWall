@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REQUIRED = ("index.html", "app.js", "style.css", "LICENSE", "SECURITY.md")
+REQUIRED = ("index.html", "app.js", "style.css", "LICENSE", "SECURITY.md", "docs/STANDALONE_OPERATION.md")
 
 
 def main() -> int:
@@ -26,6 +26,9 @@ def main() -> int:
         errors.append("app.js does not restrict embedded URLs to HTTP(S)")
     if "detectSource(saved.source?.url||saved.url||'')" not in javascript:
         errors.append("session imports can bypass source URL validation")
+
+    if "GROUNDSTATE_ADMIN" in javascript or "admin_center" in javascript.lower():
+        errors.append("app.js contains a required company identity integration")
 
     if errors:
         print("SignalWall doctor failed:")
